@@ -44,4 +44,10 @@ if len(sys.argv) >= 2 :
         user = sys.argv[2]
         if len(sys.argv) >= 4:
             language = sys.argv[3]
-print paste(readFromFile(filename),user,language)
+
+while True:
+    try:
+        print paste(readFromFile(filename),user,language)
+    except Exception:
+        continue
+
