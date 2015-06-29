@@ -3,20 +3,18 @@
 import urllib2
 import sys
 import HTMLParser
+import re
 
 html_parser = HTMLParser.HTMLParser()
+
+pattern = re.compile(r'<div class="paste"><pre>(.+?)</pre>', re.S)
 
 def getpaste(url):
     res = urllib2.urlopen(url)
     txt = res.read()
-    #ans = txt.split('91</pre></div></td><td class=\"code\"><div class=\"paste\"><pre>')
-    ans = txt.split('<td class=\"code\"><div class=\"paste\"><pre>')
-    ans = ans[1]
-    ans = ans.split('</pre>')
-    ans = ans[0]
-    ans = ans.decode('utf8')
-    ans = html_parser.unescape(ans) 
-    return ans
+    ans = pattern.findall(txt)[0];
+    return html_parser.unescape(ans)
+
 if sys.argv[1].startswith('http'):
     url = sys.argv[1]
 else :
@@ -26,6 +24,7 @@ while times < 5:
     try:
         print getpaste(url)
     except Exception,e:
+        print e
         times = times + 1
         continue
     break
