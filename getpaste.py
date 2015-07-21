@@ -13,7 +13,7 @@ def getpaste(url):
     res = urllib2.urlopen(url)
     txt = res.read()
     ans = pattern.findall(txt)[0];
-    return html_parser.unescape(ans)
+    return html_parser.unescape(ans.decode("utf8"))#.decode("utf8")
 
 if sys.argv[1].startswith('http'):
     url = sys.argv[1]
@@ -22,9 +22,8 @@ else :
 times = 0
 while times < 5:
     try:
-        print getpaste(url)
+        print getpaste(url).encode('utf8')
     except Exception,e:
-        print e
         times = times + 1
         continue
     break
