@@ -10,4 +10,8 @@ getpaste是一个命令行版本的根据url或者是paste.ubuntu.com的编号�
 python getpaste http://paste.ubuntu.com/11794787/ </br>
 python getpaste 11794787 </br>
 mac下配合pbcopy,pbpaste使用体验极佳
-linux下可配合xsel使用
+linux下可配合xsel使用<br>
+目前getpaste只能用于get是plain text的代码<br>
+至于,做软链接的Shell，例如<br>
+chmod u+x paste.py<br>
+ln -s (the_path_of_paste) /user/local/bin/ptUt<br>
