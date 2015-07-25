@@ -50,4 +50,5 @@ while True:
         print paste(readFromFile(filename),user,language)
     except Exception:
         continue
+    break
 
